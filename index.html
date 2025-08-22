@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐱 Catification - Build Your Cat Paradise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>🐱 Catification</h1>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-icon">💰</span>
+                    <span id="coins">50</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-icon">❤️</span>
+                    <span id="catification">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-icon">🐾</span>
+                    <span id="visitors">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-main">
+            <div class="game-area">
+                <canvas id="gameCanvas" width="600" height="400"></canvas>
+                
+                <div class="visiting-cats">
+                    <h3>🐱 Gatinhos Visitando:</h3>
+                    <div id="visitingCatsList" class="cats-list">
+                        <p class="no-cats">Nenhum gatinho ainda... Decore mais sua casa! 🏠</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shop-panel">
+                <h2>🛍️ Loja de Gatificação</h2>
+                
+                <div class="shop-categories">
+                    <button class="category-btn active" data-category="food">🍽️ Comida</button>
+                    <button class="category-btn" data-category="toys">🧸 Brinquedos</button>
+                    <button class="category-btn" data-category="furniture">🪑 Móveis</button>
+                    <button class="category-btn" data-category="decoration">🎨 Decoração</button>
+                </div>
+
+                <div class="shop-items" id="shopItems">
+                    <!-- Itens serão gerados dinamicamente -->
+                </div>
+
+                <div class="selected-item" id="selectedItem" style="display: none;">
+                    <h4>Item Selecionado:</h4>
+                    <div class="item-preview">
+                        <span id="selectedItemIcon">🍽️</span>
+                        <span id="selectedItemName">-</span>
+                    </div>
+                    <p class="instruction">Clique no canvas para posicionar!</p>
+                </div>
+            </div>
+        </main>
+
+        <div class="controls">
+            <button id="clearBtn">🗑️ Limpar Tudo</button>
+            <button id="saveBtn">💾 Salvar</button>
+            <button id="loadBtn">📂 Carregar</button>
+        </div>
+    </div>
+
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">🐱</h3>
+            <p id="modalMessage"></p>
+            <button id="modalCloseBtn">OK</button>
+        </div>
+    </div>
+
+    <script src="items.js"></script>
+    <script src="cats.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

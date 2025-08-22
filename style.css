@@ -1,0 +1,368 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffeaa7, #fd79a8, #6c5ce7);
+    min-height: 100vh;
+    color: #2d3436;
+}
+
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+/* Header */
+.game-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.game-header h1 {
+    font-size: 2rem;
+    background: linear-gradient(45deg, #fd79a8, #6c5ce7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(116, 185, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.stat-icon {
+    font-size: 1.2rem;
+}
+
+/* Main Game Area */
+.game-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.game-area {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+}
+
+#gameCanvas {
+    border: 3px solid #74b9ff;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #a8e6cf, #7fcdcd);
+    cursor: crosshair;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+/* Visiting Cats */
+.visiting-cats h3 {
+    color: #6c5ce7;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.cats-list {
+    max-height: 120px;
+    overflow-y: auto;
+    background: rgba(116, 185, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.cat-visitor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    margin-bottom: 5px;
+    animation: catVisit 0.5s ease-in;
+}
+
+.no-cats {
+    text-align: center;
+    color: #636e72;
+    font-style: italic;
+}
+
+@keyframes catVisit {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Shop Panel */
+.shop-panel {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.shop-panel h2 {
+    color: #6c5ce7;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.shop-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.category-btn {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.category-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.category-btn.active {
+    background: linear-gradient(135deg, #fd79a8, #e84393);
+}
+
+.shop-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.shop-item {
+    background: rgba(116, 185, 255, 0.2);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.shop-item:hover {
+    background: rgba(116, 185, 255, 0.3);
+    border-color: #74b9ff;
+    transform: scale(1.02);
+}
+
+.shop-item.selected {
+    background: rgba(253, 121, 168, 0.3);
+    border-color: #fd79a8;
+}
+
+.shop-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.shop-item-icon {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.shop-item-name {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+    display: block;
+}
+
+.shop-item-price {
+    color: #00b894;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* Selected Item */
+.selected-item {
+    background: rgba(253, 121, 168, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+.item-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+#selectedItemIcon {
+    font-size: 2rem;
+}
+
+#selectedItemName {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.instruction {
+    color: #636e72;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Controls */
+.controls {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+}
+
+.controls button {
+    background: linear-gradient(135deg, #a8e6cf, #7fcdcd);
+    color: #2d3436;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    margin: 15% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h3 {
+    color: #6c5ce7;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+#modalCloseBtn {
+    background: linear-gradient(135deg, #fd79a8, #e84393);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .game-main {
+        grid-template-columns: 1fr;
+    }
+    
+    .game-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .stats {
+        justify-content: center;
+    }
+    
+    #gameCanvas {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .shop-categories {
+        grid-template-columns: 1fr;
+    }
+    
+    .shop-items {
+        grid-template-columns: 1fr;
+    }
+    
+    .game-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .controls button {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+}
